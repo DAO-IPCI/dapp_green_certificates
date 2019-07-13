@@ -5,21 +5,21 @@
 //   ensSuffix: 'eth',
 //   lighthouse: 'airalab.lighthouse.5.robonomics.eth'
 // };
-export const CHAIN_ID = 4;
+export const CHAIN_ID = 4451;
 export const ROBONOMICS = {
   version: 5,
-  ens: '0x9D70a7ecf0834ca14969f676e54834F12eaE5E10',
-  ensSuffix: 'eth',
-  lighthouse: 'airalab.lighthouse.5.robonomics.eth'
+  ens: '0xaC4Ac4801b50b74aa3222B5Ba282FF54407B3941',
+  ensSuffix: 'sid',
+  lighthouse: 'airalab.lighthouse.5.robonomics.sid'
 };
 
-export const VALIDATOR = '0x47831d52dD6FD12E496795E1CA6E5ba73A9552DC';
+export const VALIDATOR = '0x96f2AFE0Dd16393dF8E9Ccb8864F40eD0159956d';
 // export const VALIDATOR = '0x0000000000000000000000000000000000000000';
 export const MODEL = 'QmUB6ajZTLLMZg7re1v4hw44aoG8HDQDHr9JyujU264Aw2';
 export const OBJECTIVE = 'QmVAFgUxBitKqtV2sjaYcHkKfcAPVy3GswhaE5n5bcgLkf';
 export const RESULT = 'QmVZzCia7Ptm3CiDUcF9ZYkKQuMMjFCKYjS2ckZYzMJsm7';
 export const PRICE = 0;
-export const TOKEN = '0x9C214C5792fd13d64D31563dC3D9424f39B7E7ec';
+export const TOKEN = '0x966EbbFD7ECbCF44b1e05341976e0652CFA01360';
 
 export const IPFS_CONFIG = {
   repo: 'ipfs/robonomics',
