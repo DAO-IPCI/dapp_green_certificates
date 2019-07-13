@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { Liability, Token } from "robonomics-js";
+import { Liability } from "robonomics-js";
 import * as config from "../config";
 import Passport from "./Passport";
 import getIpfs from "../utils/ipfs";
@@ -173,48 +173,22 @@ export default {
         this.passport.status = "drop";
         return;
       }
-      const token = new Token(this.$robonomics.web3, config.TOKEN);
-      window.token = token;
-      token.send
-        .mint(
-          this.passport.promisee,
-          this.passport.mvt,
-          { from: this.$robonomics.account.address },
-          (e, r) => {
-            if (e) {
-              return;
-            }
-            this.actionTx = "tx." + r;
-            this.$wait.start(this.actionTx);
-            this.passport.tx = r;
-          }
-        )
-        .then(() => {
-          return this.$robonomics.sendResult({
-            liability: address,
-            success: true,
-            result: this.passport.result
-          });
-        })
-        .then(() => {
-          this.passport.status = "confirm";
-          this.$wait.end(this.actionTx);
-          this.actionTx = "";
-          const liability = new Liability(
-            this.$robonomics.web3,
-            address,
-            "0x0000000000000000000000000000000000000000"
-          );
-          return liability.onResult();
-        })
-        .then(() => {
+      this.$robonomics.sendResult({
+        liability: address,
+        success: true,
+        result: this.passport.result
+      })
+      .then(() => {
+        this.passport.status = "confirm";
+        const liability = new Liability(
+          this.$robonomics.web3,
+          address,
+          "0x0000000000000000000000000000000000000000"
+        );
+        liability.onResult().then(() => {
           this.passport.status = "finish";
-        })
-        .catch(e => {
-          console.log(e);
-          this.$wait.end(this.actionTx);
-          this.actionTx = "";
         });
+      });
     }
   }
 };
